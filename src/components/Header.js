@@ -6,7 +6,7 @@ function Header() {
       <ul className="flex items-center justify-end space-x-8">
         <li>
           <a className="text-white" href="#">
-            Login
+            Signin
           </a>
         </li>
         <li className="text-white">

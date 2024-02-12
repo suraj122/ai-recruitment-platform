@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 
 function Sidebar() {
   return (
-    <aside className="max-w max-w-sm w-full bg-gray-600 h-screen p-4">
+    <aside className="max-w max-w-sm w-full bg-gray-800 h-screen p-4">
       <header className="text-right text-white flex justify-end">
         <IoClose className="text-xl" />
       </header>
