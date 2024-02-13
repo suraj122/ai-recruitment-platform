@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className="w-full py-4 px-16">
       <ul className="flex items-center justify-end space-x-8">
         <li>
-          <a className="text-white" href="#">
+          <Link to="/signin" className="text-white">
             Signin
-          </a>
+          </Link>
         </li>
         <li className="text-white">
-          <a href="#">Signup</a>
+          <Link to="/signup">Signup</Link>
         </li>
       </ul>
     </header>

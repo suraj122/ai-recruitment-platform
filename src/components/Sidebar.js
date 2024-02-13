@@ -1,5 +1,6 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -9,36 +10,36 @@ function Sidebar() {
       </header>
       <ul className="mt-12">
         <li className="my-4">
-          <a
+          <Link
             className="p-2 bg-gray-500 text-white w-full block rounded-md"
-            href="#"
+            to="/"
           >
             Homepage
-          </a>
+          </Link>
         </li>
         <li className="my-4">
-          <a
+          <Link
             className="p-2 text-gray-300 w-full block rounded-md hover:bg-gray-500 hover:text-white"
-            href="#"
+            to="/profile"
           >
             Profile
-          </a>
+          </Link>
         </li>
         <li className="my-4">
-          <a
+          <Link
+            to="/chat"
             className="p-2 text-gray-300 w-full block rounded-md hover:bg-gray-500 hover:text-white"
-            href="#"
           >
             Chat
-          </a>
+          </Link>
         </li>
         <li className="my-4">
-          <a
+          <Link
             className="p-2 text-gray-300 w-full block rounded-md hover:bg-gray-500 hover:text-white"
-            href="#"
+            to="/workflow"
           >
             Agent Workflow
-          </a>
+          </Link>
         </li>
       </ul>
     </aside>
