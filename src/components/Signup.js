@@ -2,12 +2,13 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const user = useRef("");
   const email = useRef("");
   const password = useRef("");
+  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -16,8 +17,22 @@ const Signup = () => {
     const userName = user.current.value;
     const userEmail = email.current.value;
     const userPassword = password.current.value;
-    const message = checkValidation(userName, userEmail, userPassword);
+    const message = checkValidation(userEmail, userPassword, userName);
     setErrorMessage(message);
+    if (!message) {
+      axios
+        .post("http://localhost:8000/auth/signup/", {
+          userEmail,
+          userPassword,
+          userName,
+        })
+        .then((res) => {
+          if (res.data.status) {
+            navigate("/signin");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (

@@ -2,21 +2,36 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const user = useRef("");
   const email = useRef("");
   const password = useRef("");
+  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  axios.defaults.withCredentials = true;
   const handleSumbit = async (e) => {
     e.preventDefault();
-    const userName = user.current.value;
-    const emailId = email.current.value;
-    const passwordInput = password.current.value;
-    const message = checkValidation(userName, emailId, passwordInput);
+    const userEmail = email.current.value;
+    const userPassword = password.current.value;
+    const message = checkValidation(userEmail, userPassword);
+    setErrorMessage(message);
+
+    if (!message) {
+      axios
+        .post("http://localhost:8000/auth/signin", {
+          userEmail,
+          userPassword,
+        })
+        .then((res) => {
+          if (res.data.status) {
+            navigate("/chat");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (

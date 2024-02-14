@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Header from "./components/Header";
 import Chat from "./components/Chat";
+import Workflow from "./components/Workflow";
 
 const AppLayout = () => (
   <>
@@ -27,6 +28,7 @@ function App() {
         { path: "/signin", element: <Login /> },
         { path: "/signup", element: <Signup /> },
         { path: "/chat", element: <Chat /> },
+        { path: "/workflow", element: <Workflow /> },
       ],
     },
   ]);
