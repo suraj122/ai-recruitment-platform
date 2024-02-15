@@ -26,7 +26,9 @@ const Login = () => {
           userPassword,
         })
         .then((res) => {
-          if (res.data.status) {
+          if (!res.data.status) {
+            setErrorMessage(res.data.message);
+          } else {
             navigate("/chat");
           }
         })
@@ -57,7 +59,14 @@ const Login = () => {
             Signin
           </button>
         </form>
-
+        <div className="mt-2">
+          <Link
+            className="text-sm hover:text-red-400 font-medium"
+            to="/forgot-password"
+          >
+            Forgot password?
+          </Link>
+        </div>
         <div>
           <p className="text-right text-sm text-gray-300 mt-4">
             New to platform?{" "}
