@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
   const [showPlaceholder, setShowPlaceholder] = useState(false);
   const [answer, setAnswer] = useState("");
+  const naviagate = useNavigate();
+
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/auth/verify")
+      .then((res) => {
+        if (!res.data.status) {
+          naviagate("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
