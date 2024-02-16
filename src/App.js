@@ -3,11 +3,12 @@ import HomePage from "./components/HomePage";
 import Sidebar from "./components/Sidebar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Header from "./components/Header";
 import Chat from "./components/Chat";
 import Workflow from "./components/Workflow";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
+import { UserContext } from "./utils/UserContext";
+import { useState } from "react";
 
 const AppLayout = () => (
   <>
@@ -19,6 +20,7 @@ const AppLayout = () => (
 );
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const appRouter = createBrowserRouter([
     {
       element: <AppLayout />,
@@ -38,7 +40,9 @@ function App() {
   ]);
   return (
     <div className="bg-gray-900 flex">
-      <RouterProvider router={appRouter} />
+      <UserContext.Provider value={{ isLoggedIn: isLoggedIn, setIsLoggedIn }}>
+        <RouterProvider router={appRouter} />
+      </UserContext.Provider>
     </div>
   );
 }

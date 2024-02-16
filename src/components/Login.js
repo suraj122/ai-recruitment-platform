@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../utils/UserContext";
 
 const Login = () => {
   const email = useRef("");
@@ -10,6 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
+  const { setIsLoggedIn } = useContext(UserContext);
 
   axios.defaults.withCredentials = true;
   const handleSumbit = async (e) => {
@@ -29,13 +31,13 @@ const Login = () => {
           if (!res.data.status) {
             setErrorMessage(res.data.message);
           } else {
+            setIsLoggedIn(true);
             navigate("/chat");
           }
         })
         .catch((err) => console.log(err));
     }
   };
-
   return (
     <main className="w-full">
       <Header />
