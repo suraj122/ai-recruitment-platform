@@ -4,6 +4,7 @@ import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
+import { LOGIN_URL } from "../utils/constant";
 
 const Login = () => {
   const email = useRef("");
@@ -23,7 +24,7 @@ const Login = () => {
 
     if (!message) {
       axios
-        .post("http://localhost:8000/auth/signin", {
+        .post(LOGIN_URL, {
           userEmail,
           userPassword,
         })

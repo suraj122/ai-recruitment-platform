@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
+import { LOGOUT_URL, VERIFY_URL } from "../utils/constant";
 
 function Header() {
   const navigate = useNavigate();
@@ -11,11 +12,10 @@ function Header() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:8000/auth/verify")
+      .get(VERIFY_URL)
       .then((res) => {
         if (res.data.status) {
           setIsLoggedIn(true);
-          console.log(res.data);
         }
       })
       .catch((err) => console.log(err));
@@ -23,7 +23,7 @@ function Header() {
 
   const handleLogout = () => {
     axios
-      .get("http://localhost:8000/auth/logout")
+      .get(LOGOUT_URL)
       .then((res) => {
         if (res.data.status) {
           setIsLoggedIn(false);

@@ -3,6 +3,7 @@ import Header from "./Header";
 // import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { RESET_PASSWORD_URL } from "../utils/constant";
 
 const ResetPassword = () => {
   const password = useRef("");
@@ -16,7 +17,7 @@ const ResetPassword = () => {
     const userPassword = password.current.value;
 
     axios
-      .post("http://localhost:8000/auth/reset-password/" + token, {
+      .post(RESET_PASSWORD_URL + token, {
         userPassword,
       })
       .then((res) => {

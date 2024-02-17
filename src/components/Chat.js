@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { VERIFY_URL } from "../utils/constant";
 
 const Chat = () => {
   const [showPlaceholder, setShowPlaceholder] = useState(false);
@@ -11,7 +12,7 @@ const Chat = () => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:8000/auth/verify")
+      .get(VERIFY_URL)
       .then((res) => {
         if (!res.data.status) {
           naviagate("/");

@@ -3,6 +3,7 @@ import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { SIGNUP_URL } from "../utils/constant";
 
 const Signup = () => {
   const user = useRef("");
@@ -21,7 +22,7 @@ const Signup = () => {
     setErrorMessage(message);
     if (!message) {
       axios
-        .post("http://localhost:8000/auth/signup/", {
+        .post(SIGNUP_URL, {
           userEmail,
           userPassword,
           userName,

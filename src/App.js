@@ -9,6 +9,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import { UserContext } from "./utils/UserContext";
 import { useState } from "react";
+import Error from "./components/Error";
 
 const AppLayout = () => (
   <>
@@ -35,6 +36,7 @@ function App() {
         { path: "/reset-password/:token", element: <ResetPassword /> },
         { path: "/chat", element: <Chat /> },
         { path: "/workflow", element: <Workflow /> },
+        { path: "*", element: <Error /> },
       ],
     },
   ]);

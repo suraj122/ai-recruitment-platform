@@ -3,6 +3,7 @@ import Header from "./Header";
 // import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FORGOT_PASSWORD_URL } from "../utils/constant";
 
 const ForgotPassword = () => {
   const email = useRef("");
@@ -17,7 +18,7 @@ const ForgotPassword = () => {
     // setErrorMessage(message);
 
     axios
-      .post("http://localhost:8000/auth/forgot-password", {
+      .post(FORGOT_PASSWORD_URL, {
         userEmail,
       })
       .then((res) => {
