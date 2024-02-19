@@ -1,5 +1,4 @@
 import React, { useState, useRef, useContext } from "react";
-import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -41,7 +40,6 @@ const Login = () => {
   };
   return (
     <main className="w-full">
-      <Header />
       <section className="max-w-sm w-full m-auto mt-24 text-white bg-gray-700 py-8 px-12 rounded-md">
         <form onSubmit={(e) => handleSumbit(e)}>
           <legend className="text-xl font-semibold mb-6">Signin</legend>

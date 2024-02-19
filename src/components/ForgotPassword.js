@@ -14,8 +14,6 @@ const ForgotPassword = () => {
   const handleSumbit = async (e) => {
     e.preventDefault();
     const userEmail = email.current.value;
-    // const message = checkValidation(userEmail);
-    // setErrorMessage(message);
 
     axios
       .post(FORGOT_PASSWORD_URL, {
@@ -27,7 +25,7 @@ const ForgotPassword = () => {
         } else {
           setErrorMessage(res.data.message);
           alert("Check your email for link to reset your password");
-          navigate("/chat");
+          navigate("/signin");
         }
       })
       .catch((err) => console.log(err));
@@ -35,7 +33,6 @@ const ForgotPassword = () => {
 
   return (
     <main className="w-full">
-      <Header />
       <section className="max-w-sm w-full m-auto mt-24 text-white bg-gray-700 py-8 px-12 rounded-md">
         <form onSubmit={(e) => handleSumbit(e)}>
           <legend className="text-xl font-semibold mb-6">

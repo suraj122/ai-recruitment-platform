@@ -1,6 +1,6 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -9,37 +9,34 @@ function Sidebar() {
         <IoClose className="text-xl" />
       </header>
       <ul className="mt-12">
-        <li className="my-4">
-          <Link
-            className="p-2 bg-gray-500 text-white w-full block rounded-md"
-            to="/"
-          >
+        <li className="my-4 nav-active">
+          <NavLink className="p-2 text-gray-300 w-full block rounded-md" to="/">
             Homepage
-          </Link>
+          </NavLink>
         </li>
-        <li className="my-4">
-          <Link
+        <li className="my-4 nav-active">
+          <NavLink
             className="p-2 text-gray-300 w-full block rounded-md hover:bg-gray-500 hover:text-white"
             to="/profile"
           >
             Profile
-          </Link>
+          </NavLink>
         </li>
-        <li className="my-4">
-          <Link
+        <li className="my-4 nav-active">
+          <NavLink
             to="/chat"
             className="p-2 text-gray-300 w-full block rounded-md hover:bg-gray-500 hover:text-white"
           >
             Chat
-          </Link>
+          </NavLink>
         </li>
-        <li className="my-4">
-          <Link
+        <li className="my-4 nav-active">
+          <NavLink
             className="p-2 text-gray-300 w-full block rounded-md hover:bg-gray-500 hover:text-white"
             to="/workflow"
           >
             Agent Workflow
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </aside>

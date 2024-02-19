@@ -10,15 +10,19 @@ import ResetPassword from "./components/ResetPassword";
 import { UserContext } from "./utils/UserContext";
 import { useState } from "react";
 import Error from "./components/Error";
+import Header from "./components/Header";
 
-const AppLayout = () => (
-  <>
-    <Sidebar />
+const AppLayout = () => {
+  return (
     <>
-      <Outlet />
+      <Sidebar />
+      <div className="w-full">
+        <Header />
+        <Outlet />
+      </div>
     </>
-  </>
-);
+  );
+};
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

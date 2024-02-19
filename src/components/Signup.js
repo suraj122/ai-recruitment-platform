@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,24 +20,27 @@ const Signup = () => {
     const message = checkValidation(userEmail, userPassword, userName);
     setErrorMessage(message);
     if (!message) {
-      axios
-        .post(SIGNUP_URL, {
-          userEmail,
-          userPassword,
-          userName,
-        })
-        .then((res) => {
-          if (res.data.status) {
-            navigate("/signin");
-          }
-        })
-        .catch((err) => console.log(err));
+      try {
+        axios
+          .post(SIGNUP_URL, {
+            userEmail,
+            userPassword,
+            userName,
+          })
+          .then((res) => {
+            if (res.data.status) {
+              navigate("/signin");
+            }
+          })
+          .catch((err) => console.log(err));
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
   return (
     <main className="w-full">
-      <Header />
       <section className="max-w-sm w-full m-auto mt-24 text-white bg-gray-700 py-8 px-12 rounded-md">
         <form onSubmit={(e) => handleSumbit(e)}>
           <legend className="text-xl font-semibold mb-6">Signup</legend>

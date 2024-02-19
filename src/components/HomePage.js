@@ -1,11 +1,12 @@
-import React from "react";
-import Header from "./Header";
+import React, { useContext } from "react";
 import { RiRobot2Line } from "react-icons/ri";
+import { UserContext } from "../utils/UserContext";
+import { Link } from "react-router-dom";
 
 function HomePage() {
+  const { isLoggedIn } = useContext(UserContext);
   return (
     <main className="w-full">
-      <Header />
       <section className="max-w-3xl w-full mx-auto mt-12 text-white">
         <div className="bg-white shadow-lg inline-block p-6 rounded-md">
           <RiRobot2Line className="text- text-5xl" />
@@ -27,16 +28,16 @@ function HomePage() {
           </p>
           <ul className="flex items-center justify-between bg-gray-600 p-2 px-6 text-center mt-8 rounded-md space-x-2">
             <li className="bg-[#f63366] flex-1 p-2 font-bold rounded cursor-pointer">
-              Login/Signup
+              {isLoggedIn ? "Logout" : "Login/Signup"}
             </li>
             <li className="hover:bg-[#f63366] flex-1 p-2 cursor-pointer rounded">
-              Create Profile
+              <Link to="/profile">Go to profile</Link>
             </li>
             <li className="hover:bg-[#f63366] flex-1 p-2 cursor-pointer rounded">
-              Chat with AI
+              <Link to="/chat">Chat with AI</Link>
             </li>
             <li className="hover:bg-[#f63366] flex-1 p-2 cursor-pointer rounded">
-              Agent Workflow
+              <Link to="/workflow">Agent Workflow</Link>
             </li>
           </ul>
         </article>

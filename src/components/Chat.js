@@ -34,7 +34,6 @@ const Chat = () => {
 
   return (
     <main className="w-full">
-      <Header />
       <section className="max-w-3xl w-full mx-auto mt-12 text-white">
         <h1 className="text-4xl font-bold">Hiring Requirements</h1>
         <article className="mt-8">
