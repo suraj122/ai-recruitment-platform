@@ -5,3 +5,36 @@
 .nav-active a.active {
   @apply bg-gray-500 text-white;
 }
+
+.sidebar-open {
+  animation: slideRight 500ms linear forwards;
+}
+.sidebar-close {
+  animation: slideLeft 500ms linear forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    width: 0;
+    opacity: 0;
+    background-color: none;
+  }
+  100% {
+    width: 24rem;
+    opacity: 1;
+    @apply bg-gray-800;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    width: 24rem;
+    opacity: 1;
+    @apply bg-gray-800;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+    background-color: none;
+  }
+}

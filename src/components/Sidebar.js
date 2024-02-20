@@ -2,11 +2,15 @@ import React from "react";
 import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   return (
-    <aside className="max-w max-w-sm w-full bg-gray-800 h-screen p-4">
+    <aside
+      className={`max-w max-w-sm w-full bg-gray-800 h-screen p-4 ${
+        isSidebarOpen ? "sidebar-open" : "sidebar-close"
+      }`}
+    >
       <header className="text-right text-white flex justify-end">
-        <IoClose className="text-xl" />
+        <IoClose onClick={() => setIsSidebarOpen(false)} className="text-xl" />
       </header>
       <ul className="mt-12">
         <li className="my-4 nav-active">
