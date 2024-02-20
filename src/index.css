@@ -7,10 +7,10 @@
 }
 
 .sidebar-open {
-  animation: slideRight 500ms linear forwards;
+  animation: slideRight 300ms linear forwards;
 }
 .sidebar-close {
-  animation: slideLeft 500ms linear forwards;
+  animation: slideLeft 300ms linear forwards;
 }
 
 @keyframes slideRight {

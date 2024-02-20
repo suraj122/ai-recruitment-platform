@@ -11,27 +11,16 @@ import { UserContext } from "./utils/UserContext";
 import { useState } from "react";
 import Error from "./components/Error";
 import Header from "./components/Header";
-import { IoIosArrowForward } from "react-icons/io";
 
 const AppLayout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   return (
     <>
-      {isSidebarOpen ? (
-        <Sidebar
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-        />
-      ) : (
-        <div className="p-4">
-          <button
-            onClick={() => setIsSidebarOpen(true)}
-            className="bg-gray-500 text-white p-2 rounded"
-          >
-            <IoIosArrowForward />
-          </button>
-        </div>
-      )}
+      <Sidebar
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+
       <div className="w-full">
         <Header />
         <Outlet />
